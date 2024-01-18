@@ -4,7 +4,12 @@ const { WebSocket } = require('ws')
 const bodyParser=require('body-parser')
 const app = express()
 const api = require('./routes/api')
-
+require('dotenv').config(); //載入.env環境檔
+function getEnvVariable () {
+    const env_variable= process.env.YOUR_VARIABLE;// 取出環境變數
+    console.log(env_variable);
+}
+getEnvVariable()
 //* server setup
 app.use(bodyParser.json({limit:'100mb'}));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
